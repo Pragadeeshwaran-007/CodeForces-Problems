@@ -10,19 +10,21 @@ int main() {
     while (t--) {
         int n, k;
         cin >> n >> k;
+        vector<long long> a(n), b(n);
 
-        vector<long long> a(n+1), b(n+1);
-        for (int i = 1; i <= n; i++) cin >> a[i];
-        for (int i = 1; i <= n; i++) cin >> b[i];
+        for (int i = 0; i < n; i++) cin >> a[i];
+        for (int i = 0; i < n; i++) cin >> b[i];
 
-        long long prefA = 0, best = 0, ans = 0;
+        long long prefixA = 0;
+        long long maxB = 0;
+        long long ans = 0;
 
-        for (int i = 1; i <= n && i <= k; i++) {
-            prefA += a[i];
-            best = max(best, b[i]);
+        for (int i = 0; i < n && i < k; i++) {
+            prefixA += a[i];
+            maxB = max(maxB, b[i]);
 
-            long long rem = k - i;
-            long long total = prefA + rem * best;
+            long long remaining = k - (i + 1);  // after completing 1..i
+            long long total = prefixA + maxB * remaining;
 
             ans = max(ans, total);
         }
