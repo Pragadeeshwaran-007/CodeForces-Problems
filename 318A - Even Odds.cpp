@@ -3,7 +3,7 @@ using namespace std;
 
 class Solution {
 public:
-    int pos(int n, int k) {
+    int pos(long long n, long long k) {
         long long oddCount = (n+1)/2;
         if (k <= oddCount) {
             return (2 * k-1);
@@ -16,7 +16,7 @@ public:
 
 int main() {
     Solution s;
-    int n , k;
+    long long n , k;
     cin >> n >> k;
     cout << s.pos(n,k);
     return 0;
