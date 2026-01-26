@@ -1,0 +1,12 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main() {
+int n, m, a, b;
+cin >> n >> m >> a >> b;
+int ans = n * a;
+ans = min(ans, (n / m) * b + (n % m) * a);
+ans = min(ans, (n + m - 1) / m * b);
+cout << ans << endl;
+return 0;
+}
